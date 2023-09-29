@@ -1,0 +1,64 @@
+let ar = [
+  10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1,
+  40, 100, -1, -1, -1,
+];
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.children = [];
+  }
+}
+
+class GenericTree {
+  constructor() {
+    this.root = null;
+  }
+
+  // function to make generic tree from array
+  makeTreeFromArr() {
+    let stack = [];
+    for (let i = 0; i < ar.length; i++) {
+      if (ar[i] === -1) {
+        stack.pop();
+      } else {
+        let newNode = new Node(ar[i]);
+        if (stack.length > 0) {
+          stack[stack.length - 1].children.push(newNode);
+        } else {
+          this.root = newNode;
+        }
+        stack.push(newNode);
+      }
+    }
+    return this.root;
+  }
+
+  display(node) {
+    let str = node.val + " -> ";
+    for (let child of node.children) {
+      str += child.val + ", ";
+    }
+    str += ".";
+    console.log(str);
+    for (let child of node.children) {
+      this.display(child);
+    }
+  }
+}
+
+let gt = new GenericTree();
+let treeRoot = gt.makeTreeFromArr();
+gt.display(treeRoot);
+
+// 10 -> 20, 30, 40, .
+// 20 -> 50, 60, .
+// 50 -> .
+// 60 -> .
+// 30 -> 70, 80, 90, .
+// 70 -> .
+// 80 -> 110, 120, .
+// 110 -> .
+// 120 -> .
+// 90 -> .
+// 40 -> 100, .
+// 100 -> .
