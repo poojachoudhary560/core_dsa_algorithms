@@ -32,33 +32,8 @@ class GenericTree {
     }
     return this.root;
   }
-
-  display(node) {
-    let str = node.val + " -> ";
-    for (let child of node.children) {
-      str += child.val + ", ";
-    }
-    str += ".";
-    console.log(str);
-    for (let child of node.children) {
-      this.display(child);
-    }
-  }
 }
 
 let gt = new GenericTree();
 let treeRoot = gt.makeTreeFromArr();
-gt.display(treeRoot);
-
-// 10 -> 20, 30, 40, .
-// 20 -> 50, 60, .
-// 50 -> .
-// 60 -> .
-// 30 -> 70, 80, 90, .
-// 70 -> .
-// 80 -> 110, 120, .
-// 110 -> .
-// 120 -> .
-// 90 -> .
-// 40 -> 100, .
-// 100 -> .
+console.log(treeRoot);
