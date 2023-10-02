@@ -33,6 +33,7 @@ class GenericTree {
     return this.root;
   }
 
+  // function ti display node and its immediate children values
   display(node) {
     let str = node.val + " ->";
     for (let child of node.children) {
