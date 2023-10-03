@@ -19,6 +19,7 @@ function helper(arr, sum, n, t) {
     return t[n][sum];
 }
 function subsetSumIterative(arr, sum) {
+    let n = arr.length;
     let t = Array(n+1).fill(null).map(() => Array(sum+1));
     return helper(arr, sum, arr.length, t);
 }
