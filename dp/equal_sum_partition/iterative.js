@@ -2,7 +2,8 @@ function helper(arr, sum, n) {
     let t = Array(n+1).fill(null).map(() => Array(sum+1));
     for(let i=0; i<n+1; i++) {
         for(let j=0; j<sum+1; j++) {
-            // if(i===0) 
+            if(i===0) t[i][j] = 0;
+            if(j===0) t[i][j] = 1;
         }
     }
 }
